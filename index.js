@@ -4,7 +4,7 @@ const app = express();
 // Task 1: Create your views folder and add the correct files to it. 
 
 // Task 2: Set the view engine to ejs.
-
+app.set('view engine', 'ejs')
 app.get("/", (req, res) => {
   // Task 3: Create a data object with the following 3 keys:
   // "title" key with the a string as a value (Pick Your Store's title)
@@ -14,10 +14,21 @@ app.get("/", (req, res) => {
   // "name" key with a string as a value (Name the item your selling)
   // "sale" key with a string as a value (Give it a sale, like 5% off. If there is no sale leave an empty string)
 
-
+  const data = {
+    title: "Gnocchi's Store",
+    itemsOnSale: true, 
+    products: [
+      { name: "T shirt", sale: "5% off" },
+       { name: "Catnip Toy", 
+      sale: "10% off" },
+      { name: "Cat Scratching Post",
+         sale: "5% off" }
+  ]}
+  
 
   // Task 4: Render the ejs file "store.ejs" with your data object.
-});
+  res.render("store.ejs", data);
+})
 
 // Task 5: [CONTINUE TASKS IN store.ejs]
 
